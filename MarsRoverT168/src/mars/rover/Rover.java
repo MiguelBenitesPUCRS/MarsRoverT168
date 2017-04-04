@@ -1,19 +1,38 @@
+//Rover ::
+//Conventions: N=North (Norte), S=South (Sul), E=East (Leste), W=West (Oeste) 
+
 package mars.rover;
 
 public class Rover {
 	
-	private int coordX;
-	private int coordY;
-	private char cardinalPoint;
+	private static int roverSeq=0;
+	
+	private int id;				//identification of rover
+	private int coordX;			//coordinate axial X
+	private int coordY;			//coordinate axial Y
+	private String name;		//rover's name 
+	private char cardinalPoint;	//the direction of rover
 	
 	public Rover(char cardinalPoint) {
+		this.id = roverSeq++;
 		this.cardinalPoint = cardinalPoint;
+		this.name = "Opportunity";
 		this.coordX = 0;
 		this.coordY = 0;
 	}
 	
 	public Rover(char cardinalPoint, int x, int y) {
+		this.id = roverSeq++;
 		this.cardinalPoint = cardinalPoint;
+		this.name = "Opportunity";
+		this.coordX = x;
+		this.coordY = y;
+	}
+
+	public Rover(String name, char cardinalPoint, int x, int y) {
+		this.id = roverSeq++;
+		this.cardinalPoint = cardinalPoint;
+		this.name = name;
 		this.coordX = x;
 		this.coordY = y;
 	}
@@ -42,40 +61,59 @@ public class Rover {
 		this.coordY = coordY;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public static int getRoverSeq() {
+		return roverSeq;
+	}
+
+	//N=North (Norte), S=South (Sul), E=East (Leste), W=West (Oeste) 
 	public void left(){
 		switch (cardinalPoint){
 		case 'N':
-			setCardinalPoint('O');
+			setCardinalPoint('W');
 			break;
-		case 'O':
+		case 'W':
 			setCardinalPoint('S');
 			break;
 		case 'S':
-			setCardinalPoint('L');
+			setCardinalPoint('E');
 			break;
-		case 'L':
+		case 'E':
 			setCardinalPoint('N');
 			break;
 		}
 	}
 	
+	//N=North (Norte), S=South (Sul), E=East (Leste), W=West (Oeste) 
 	public void right(){
 		switch (cardinalPoint){
 		case 'N':
-			setCardinalPoint('L');
+			setCardinalPoint('E');
 			break;
-		case 'L':
+		case 'E':
 			setCardinalPoint('S');
 			break;
 		case 'S':
-			setCardinalPoint('O');
+			setCardinalPoint('W');
 			break;
-		case 'O':
+		case 'W':
 			setCardinalPoint('N');
 			break;
 		}
 	}
 		
+	//N=North (Norte), S=South (Sul), E=East (Leste), W=West (Oeste) 
 	public void move(){
 		switch (cardinalPoint){
 		case 'N':
@@ -84,28 +122,28 @@ public class Rover {
 		case 'S':
 			setCoordY(coordY-1);
 			break;		
-		case 'L':
+		case 'E':
 			setCoordX(coordX+1);
 			break;
-		case 'O':
+		case 'W':
 			setCoordX(coordX-1);
 			break;
-		}
-					
+		}					
 	}
 	
 	public void command(char comm){
 		switch (comm){
 		case 'L':
-			left();
+			left();		//turn to left
 			break;
 		case 'R':
-			right();
+			right();	//turn to right
 			break;
 		case 'M':
-			move();
+			move();		//move to straight
 			break;
 		}
 	}
+	
 }
 
