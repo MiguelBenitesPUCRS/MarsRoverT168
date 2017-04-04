@@ -58,5 +58,14 @@ public class depurMarsRover {
 		
 		
 	}
+	
+	
+//	string.toUpperCase()
+//	string.toLowerCase()
+//	Scanner s = new Scanner(System.in);
+//	String nome = s.nextLine();
+//	for(int i = 0; i < nome.length(); i++) {
+//	  System.out.println(nome.charAt(i));
+//	}
 
 }

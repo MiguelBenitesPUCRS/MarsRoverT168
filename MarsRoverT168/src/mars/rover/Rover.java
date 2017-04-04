@@ -145,5 +145,9 @@ public class Rover {
 		}
 	}
 	
+	public void inserRoverToPateau(){
+		
+	}
+	
 }
 
